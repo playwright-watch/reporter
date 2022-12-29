@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/TheHatSky/qa-dashboard-reporter/compare/v0.1.0...v0.1.0) (2022-12-29)
+
+
+### Features
+
+* release zero version ([3708621](https://github.com/TheHatSky/qa-dashboard-reporter/commit/37086217bd033c7412ded5cea5c79dd06958b2cd))
+
 ## 0.1.0 (2022-12-29)
 
 
