@@ -1,21 +1,23 @@
 {
-  "name": "qa-dashboard-reporter",
-  "version": "1.0.0",
+  "name": "playwright-monitor-reporter",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rollup -c ./rollup.config.js",
-    "test": "jest"
+    "build": "rollup -c ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "test": "jest",
+    "ci:publish": "pnpm publish -r"
   },
   "keywords": [],
   "author": "Artem Sakhatskiy",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.7",
     "@babel/preset-typescript": "^7.18.6",
     "@jest/globals": "^29.3.1",
+    "@rollup/plugin-typescript": "^10.0.1",
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
@@ -27,6 +29,7 @@
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.1",
     "rollup": "^3.9.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.1.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "ts-jest": "^29.0.3",
