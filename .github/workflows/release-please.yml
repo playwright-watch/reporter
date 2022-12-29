@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - test-release
 
 name: release-please
 jobs:
@@ -12,6 +12,7 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
+          default-branch: test-release
 
       - name: Checkout
         uses: actions/checkout@v3
