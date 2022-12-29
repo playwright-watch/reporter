@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/TheHatSky/qa-dashboard-reporter/compare/v0.1.0...v0.2.0) (2022-12-29)
+
+
+### Features
+
+* add Reporter and helper functions ([89eacd5](https://github.com/TheHatSky/qa-dashboard-reporter/commit/89eacd5cf3fe36236c1413532e087abe4d8fcc0d))
+
 ## 0.1.0 (2022-12-29)
 
 
