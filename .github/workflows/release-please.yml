@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: node
           package-name: release-please-action
@@ -56,9 +57,14 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: pnpm build
 
+      - name: Test
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm test
+
       - name: Publish
         if: ${{ steps.release.outputs.release_created }}
         working-directory: dist
-        run: pnpm publish --access restricted
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+          echo "always-auth=true" >> ~/.npmrc
+          pnpm publish
