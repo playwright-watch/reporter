@@ -1,14 +1,19 @@
+name: Release
+
 on:
   push:
     branches:
       - main
 
-name: release-please
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    name: Release & Publish
+
     steps:
       - uses: google-github-actions/release-please-action@v3
+        id: release
+        name: Release please
         with:
           release-type: node
           package-name: release-please-action
@@ -23,6 +28,7 @@ jobs:
         with:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@thehatsky'
 
       - uses: pnpm/action-setup@v2
         if: ${{ steps.release.outputs.release_created }}
@@ -56,9 +62,12 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: pnpm build
 
+      - name: Test
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm test
+
       - name: Publish
         if: ${{ steps.release.outputs.release_created }}
-        working-directory: dist
-        run: pnpm publish --access restricted
+        run: pnpm publish dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
