@@ -1,0 +1,10 @@
+.eslintignore
+.eslintrc
+.gitignore
+.prettierrc
+LICENSE
+package.json
+README.md
+tailwind.config.js
+tsconfig.json
+pnpm-lock.yaml
