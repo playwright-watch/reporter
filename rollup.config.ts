@@ -1,8 +1,8 @@
-// @file: rollup.config.js
 import { RollupOptions } from 'rollup';
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
 import copy from 'rollup-plugin-copy';
+import json from '@rollup/plugin-json';
 
 const config: RollupOptions[] = [
   {
@@ -10,14 +10,16 @@ const config: RollupOptions[] = [
     output: [
       {
         file: 'dist/index.js',
-        format: 'es',
+        format: 'cjs',
         sourcemap: true,
-        exports: 'default',
+        exports: 'named',
         assetFileNames: '*.md',
       },
     ],
+    external: ['fs/promises', 'path', 'axios', 'consola'],
     plugins: [
       esbuild(),
+      json(),
       copy({
         targets: [
           {
@@ -34,7 +36,7 @@ const config: RollupOptions[] = [
   },
   {
     input: './src/index.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'es' }],
+    output: [{ file: 'dist/index.d.ts', format: 'cjs' }],
     plugins: [dts()],
   },
 ];
