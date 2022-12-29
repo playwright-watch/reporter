@@ -1,8 +1,10 @@
 // @file: rollup.config.js
+import { RollupOptions } from 'rollup';
 import dts from 'rollup-plugin-dts';
 import esbuild from 'rollup-plugin-esbuild';
+import copy from 'rollup-plugin-copy';
 
-const config = [
+const config: RollupOptions[] = [
   {
     input: './src/index.ts',
     output: [
@@ -11,9 +13,24 @@ const config = [
         format: 'es',
         sourcemap: true,
         exports: 'default',
+        assetFileNames: '*.md',
       },
     ],
-    plugins: [esbuild()],
+    plugins: [
+      esbuild(),
+      copy({
+        targets: [
+          {
+            src: ['package.json', 'LICENSE', 'README.md'],
+            dest: 'dist',
+          },
+          {
+            src: './src/*',
+            dest: 'dist/src',
+          },
+        ],
+      }),
+    ],
   },
   {
     input: './src/index.ts',

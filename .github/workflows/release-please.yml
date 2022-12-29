@@ -1,0 +1,64 @@
+on:
+  push:
+    branches:
+      - main
+
+name: release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: release-please-action
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install Node.js
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://npm.pkg.github.com'
+
+      - uses: pnpm/action-setup@v2
+        if: ${{ steps.release.outputs.release_created }}
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Get pnpm store directory
+        if: ${{ steps.release.outputs.release_created }}
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        if: ${{ steps.release.outputs.release_created }}
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm install
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm build
+
+      - name: Publish
+        if: ${{ steps.release.outputs.release_created }}
+        working-directory: dist
+        run: pnpm publish --access restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
