@@ -1,5 +1,4 @@
 import type {
-  FullResult,
   Reporter as ReporterBase,
   TestError,
 } from '@playwright/test/reporter';
@@ -10,7 +9,8 @@ import { getOutput } from './getOutput';
 import type { ReporterOptions } from './types';
 
 export class Reporter implements ReporterBase {
-  private errorInWorkerProcess: TestError | null = null;
+  public errorInWorkerProcess: TestError | null = null;
+
   private readonly options: ReporterOptions;
 
   constructor(options: ReporterOptions) {
@@ -31,17 +31,13 @@ export class Reporter implements ReporterBase {
     logger.error(error);
   }
 
-  async onEnd(result: FullResult) {
+  async onEnd() {
     const { project, publicKey, target, logger } = this.options;
 
     if (this.errorInWorkerProcess != null) {
       logger.info(
         "There's an error in worker process, report will not be uploaded"
       );
-      return;
-    }
-
-    if (result.status !== 'failed') {
       return;
     }
 
@@ -62,9 +58,13 @@ export class Reporter implements ReporterBase {
     );
 
     if (response.status !== 200) {
-      logger.error('Failed to upload report to QA dashboard');
+      logger.error(
+        'Failed to upload report to Playwright Monitor dashboard',
+        response.status,
+        response.data
+      );
     } else {
-      logger.info('Report uploaded to QA dashboard');
+      logger.info('Report uploaded to Playwright Monitor dashboard');
     }
   }
 }
