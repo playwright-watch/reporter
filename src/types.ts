@@ -1,6 +1,6 @@
 import type { Consola } from 'consola';
 
-export type Logger = Console | Pick<Consola, 'error' | 'info' | 'log'>;
+export type Logger = Pick<Console | Consola, 'debug' | 'info' | 'error'>;
 
 export interface ReporterOptions {
   target: string;

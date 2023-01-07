@@ -4,5 +4,13 @@
     "resolveJsonModule": true,
     "moduleResolution": "node"
   },
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "module": "ES6",
+      "target": "ES6"
+    }
+  }
 }
