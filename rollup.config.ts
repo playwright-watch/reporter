@@ -4,6 +4,16 @@ import esbuild from 'rollup-plugin-esbuild';
 import copy from 'rollup-plugin-copy';
 import json from '@rollup/plugin-json';
 
+const external = [
+  'fs/promises',
+  'path',
+  'axios',
+  'consola',
+  'yargs',
+  'yargs/helpers',
+  '@supabase/supabase-js',
+];
+
 const config: RollupOptions[] = [
   {
     input: './src/index.ts',
@@ -16,7 +26,7 @@ const config: RollupOptions[] = [
         assetFileNames: '*.md',
       },
     ],
-    external: ['fs/promises', 'path', 'axios', 'consola'],
+    external,
     plugins: [
       esbuild(),
       json(),
@@ -38,6 +48,19 @@ const config: RollupOptions[] = [
     input: './src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'cjs' }],
     plugins: [dts()],
+  },
+  {
+    input: './src/cli.ts',
+    output: [
+      {
+        file: 'dist/cli.cjs',
+        format: 'cjs',
+        sourcemap: true,
+        exports: 'named',
+      },
+    ],
+    external,
+    plugins: [esbuild(), json()],
   },
 ];
 

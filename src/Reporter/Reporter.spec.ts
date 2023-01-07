@@ -1,8 +1,8 @@
 import { describe, expect, jest, test } from '@jest/globals';
 import axios from 'axios';
 import consola from 'consola';
-import { getReporters } from './getReporters';
-import { Reporter } from './Reporter';
+import { getReporters } from '../getReporters';
+import { Reporter } from '.';
 import fs from 'fs/promises';
 
 jest.mock('axios');
@@ -19,7 +19,7 @@ const defaultOptions = {
 
 describe('Reporter', () => {
   const createLogger = () => ({
-    log: jest.fn(consola.log),
+    debug: jest.fn(consola.debug),
     info: jest.fn(consola.info),
     error: jest.fn(consola.error),
   });
@@ -36,7 +36,7 @@ describe('Reporter', () => {
 
   test('Default export should be a Reporter constructor', () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const DefaultExportReporter: typeof Reporter = require('./index').default;
+    const DefaultExportReporter: typeof Reporter = require('../index').default;
 
     const reporter = new DefaultExportReporter(defaultOptions);
 
@@ -52,11 +52,11 @@ describe('Reporter', () => {
       logger,
     });
 
-    expect(logger.log).not.toBeCalled();
+    expect(logger.debug).not.toBeCalled();
 
     reporter.onStart();
 
-    expect(logger.log).toBeCalledWith('Report started');
+    expect(logger.debug).toBeCalledWith('Report started');
   });
 
   test('onError logs error and memos it in state', () => {
@@ -79,7 +79,7 @@ describe('Reporter', () => {
     reporter.onError(error);
 
     expect(logger.info).not.toBeCalled();
-    expect(logger.log).not.toBeCalled();
+    expect(logger.debug).not.toBeCalled();
     expect(logger.error).toBeCalledWith(error);
     expect(reporter.errorInWorkerProcess).toEqual(error);
   });
@@ -96,7 +96,7 @@ describe('Reporter', () => {
 
     expect(axiosMock.post).not.toBeCalled();
     expect(logger.error).not.toBeCalled();
-    expect(logger.log).not.toBeCalled();
+    expect(logger.debug).not.toBeCalled();
     expect(logger.info).toBeCalledWith(
       "There's an error in worker process, report will not be uploaded"
     );
@@ -110,6 +110,7 @@ describe('Reporter', () => {
     axiosMock.post.mockResolvedValue(
       Promise.resolve({
         status: 200,
+        data: {},
       })
     );
 
@@ -129,10 +130,8 @@ describe('Reporter', () => {
     );
 
     expect(logger.error).not.toBeCalled();
-    expect(logger.log).not.toBeCalled();
-    expect(logger.info).toBeCalledWith(
-      'Report uploaded to Playwright Monitor dashboard'
-    );
+    expect(logger.debug).not.toBeCalled();
+    expect(logger.info).toBeCalledWith('Report summary uploaded to dashboard');
   });
 
   test('onEnd without error but with failed report upload logs error', async () => {
@@ -162,11 +161,11 @@ describe('Reporter', () => {
     );
 
     expect(logger.error).toBeCalledWith(
-      'Failed to upload report to Playwright Monitor dashboard',
+      'Failed to upload report to dashboard',
       failedRequest.status,
       failedRequest.data
     );
-    expect(logger.log).not.toBeCalled();
+    expect(logger.debug).not.toBeCalled();
     expect(logger.info).not.toBeCalled();
   });
 });

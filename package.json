@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
-  "type": "module",
+  "type": "commonjs",
+  "bin": {
+    "playwright-monitor-reporter": "cli.cjs"
+  },
   "scripts": {
     "build": "rollup -c ./rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "test": "jest",
@@ -19,10 +22,12 @@
     "@babel/preset-typescript": "^7.18.6",
     "@jest/globals": "^29.3.1",
     "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^10.0.1",
     "@stryker-mutator/core": "^6.3.1",
     "@stryker-mutator/jest-runner": "^6.3.1",
     "@types/node": "^18.11.18",
+    "@types/yargs": "^17.0.18",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "esbuild": "^0.16.12",
@@ -40,7 +45,12 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "ts-jest": "^29.0.3",
     "tslib": "^2.4.1",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "yargs": "^17.6.2",
+    "@playwright/test": "^1.29.1",
+    "@supabase/supabase-js": "^2.2.3",
+    "axios": "^1.2.2",
+    "consola": "^2.15.3"
   },
   "lint-staged": {
     "**/*": [
@@ -48,9 +58,10 @@
       "prettier --write --ignore-unknown --ignore-path .gitignore"
     ]
   },
-  "dependencies": {
-    "@playwright/test": "^1.29.1",
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.2.3",
     "axios": "^1.2.2",
+    "yargs": "^17.6.2",
     "consola": "^2.15.3"
   }
 }
