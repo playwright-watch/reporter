@@ -15,7 +15,7 @@ export class Reporter implements ReporterBase {
   constructor(options: ReporterOptions) {
     this.options = {
       ...options,
-      logger: options.logger ?? consola.withTag('Playwright Monitor'),
+      logger: options.logger ?? consola.withTag('Playwright Watch'),
     };
   }
 

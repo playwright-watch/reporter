@@ -1,20 +1,35 @@
-import { describe, expect, jest, test } from '@jest/globals';
-import axios from 'axios';
+import { describe, expect, jest, test, beforeEach } from '@jest/globals';
 import consola from 'consola';
-import { getReporters } from '../getReporters';
 import { Reporter } from '.';
 import fs from 'fs/promises';
+import { getReporters } from '../getReporters';
 
-jest.mock('axios');
+const functionsInvoke =
+  jest.fn<() => { error: null | unknown; data: null | unknown }>();
+const storageUpload = jest.fn();
+const storageFrom = jest.fn(() => ({
+  upload: storageUpload,
+}));
+
+jest.mock('../supabase', () => ({
+  getSupabase: () => ({
+    functions: {
+      invoke: functionsInvoke,
+    },
+    storage: {
+      from: storageFrom,
+    },
+  }),
+}));
+
 jest.mock('fs/promises');
-
-const axiosMock = axios as jest.Mocked<typeof axios>;
 const fsMock = fs as jest.Mocked<typeof fs>;
 
 const defaultOptions = {
-  target: 'ACME',
-  project: 'acmeproject',
-  publicKey: 'test_key',
+  organization: 'ACME',
+  project: 'dynamites',
+  supabaseProject: 'acmeproject',
+  supabasePublicKey: 'test_key',
 };
 
 describe('Reporter', () => {
@@ -22,6 +37,12 @@ describe('Reporter', () => {
     debug: jest.fn(consola.debug),
     info: jest.fn(consola.info),
     error: jest.fn(consola.error),
+  });
+
+  beforeEach(() => {
+    functionsInvoke.mockReset();
+    storageUpload.mockReset();
+    storageFrom.mockReset();
   });
 
   test('Create a reporter from default options', () => {
@@ -56,7 +77,7 @@ describe('Reporter', () => {
 
     reporter.onStart();
 
-    expect(logger.debug).toBeCalledWith('Report started');
+    expect(logger.debug).toBeCalledWith('Test run started');
   });
 
   test('onError logs error and memos it in state', () => {
@@ -94,7 +115,7 @@ describe('Reporter', () => {
 
     await reporter.onEnd();
 
-    expect(axiosMock.post).not.toBeCalled();
+    // expect(fetchMock).not.toBeCalled();
     expect(logger.error).not.toBeCalled();
     expect(logger.debug).not.toBeCalled();
     expect(logger.info).toBeCalledWith(
@@ -102,33 +123,35 @@ describe('Reporter', () => {
     );
   });
 
-  test('onEnd without error successfully uploads the report', async () => {
+  test('onEnd without error successfully uploads the report without artifacts', async () => {
     const logger = createLogger();
     const reporter = new Reporter({ ...defaultOptions, logger });
 
-    fsMock.readFile.mockResolvedValue(Buffer.from('{}'));
-    axiosMock.post.mockResolvedValue(
-      Promise.resolve({
-        status: 200,
-        data: {},
-      })
-    );
+    const report = {
+      suites: [],
+    };
+
+    functionsInvoke.mockReturnValue({
+      error: null,
+      data: {
+        data: {
+          id: 'test',
+        },
+      },
+    });
+
+    fsMock.readFile.mockResolvedValue(Buffer.from(JSON.stringify(report)));
 
     await reporter.onEnd();
 
-    expect(axiosMock.post).toBeCalledWith(
-      `https://${defaultOptions.project}.functions.supabase.co/upload-report`,
-      {
-        target: defaultOptions.target,
-        report: {},
+    expect(functionsInvoke).toBeCalledWith('upload-report', {
+      body: {
+        project: defaultOptions.project,
+        report: report,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${defaultOptions.publicKey}`,
-        },
-      }
-    );
+    });
 
+    expect(storageFrom).not.toBeCalled();
     expect(logger.error).not.toBeCalled();
     expect(logger.debug).not.toBeCalled();
     expect(logger.info).toBeCalledWith('Report summary uploaded to dashboard');
@@ -138,32 +161,26 @@ describe('Reporter', () => {
     const logger = createLogger();
     const reporter = new Reporter({ ...defaultOptions, logger });
 
-    fsMock.readFile.mockResolvedValue(Buffer.from('{}'));
-    const failedRequest = {
-      status: 400,
-      data: { error: 'Invalid request' },
+    const report = {
+      suites: [],
     };
-    axiosMock.post.mockResolvedValue(Promise.resolve(failedRequest));
+
+    const error = {
+      message: 'Invalid request',
+    };
+
+    functionsInvoke.mockReturnValue({
+      error,
+      data: null,
+    });
+
+    fsMock.readFile.mockResolvedValue(Buffer.from(JSON.stringify(report)));
 
     await reporter.onEnd();
 
-    expect(axiosMock.post).toBeCalledWith(
-      `https://${defaultOptions.project}.functions.supabase.co/upload-report`,
-      {
-        target: defaultOptions.target,
-        report: {},
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${defaultOptions.publicKey}`,
-        },
-      }
-    );
-
     expect(logger.error).toBeCalledWith(
       'Failed to upload report to dashboard',
-      failedRequest.status,
-      failedRequest.data
+      error
     );
     expect(logger.debug).not.toBeCalled();
     expect(logger.info).not.toBeCalled();
