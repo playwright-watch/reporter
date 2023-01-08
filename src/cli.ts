@@ -10,7 +10,8 @@ import { ReporterOptions } from './types';
 const defaultOptions: ReporterOptions = {
   supabaseProject: process.env.SUPABASE_PROJECT,
   supabasePublicKey: process.env.SUPABASE_KEY,
-  project: 'test',
+  organization: process.env.PLAYWRIGHT_WATCH_ORGANIZATION,
+  project: process.env.PLAYWRIGHT_WATCH_PROJECT,
   logger: consola.withTag('Playwright Watch'),
   testResultsFolder: '',
 };
