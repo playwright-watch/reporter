@@ -13,9 +13,10 @@ describe('getReporters', () => {
 
   test("Default reporter for project 'ACME'", () => {
     const reporters = getReporters({
-      target: 'ACME',
-      project: 'acmeproject',
-      publicKey: 'test_key',
+      organization: 'ACME',
+      project: 'dynamites',
+      supabaseProject: 'acmeproject',
+      supabasePublicKey: 'test_key',
     });
 
     expect(reporters.length).toBe(2);
@@ -35,17 +36,19 @@ describe('getReporters', () => {
     expect(name).toBe('@thehatsky/playwright-monitor-reporter');
 
     expect(options).toEqual({
-      target: 'ACME',
-      project: 'acmeproject',
-      publicKey: 'test_key',
+      organization: 'ACME',
+      project: 'dynamites',
+      supabaseProject: 'acmeproject',
+      supabasePublicKey: 'test_key',
     });
   });
 
-  test("Default reporter for project 'ACME'", () => {
+  test("Default reporter for project 'ACME' with custom report folder", () => {
     const reporters = getReporters({
-      target: 'ACME',
-      project: 'acmeproject',
-      publicKey: 'test_key',
+      organization: 'ACME',
+      project: 'dynamites',
+      supabaseProject: 'acmeproject',
+      supabasePublicKey: 'test_key',
 
       testResultsFolder: 'my-folder',
     });
@@ -67,9 +70,10 @@ describe('getReporters', () => {
     expect(name).toBe('@thehatsky/playwright-monitor-reporter');
 
     expect(options).toEqual({
-      target: 'ACME',
-      project: 'acmeproject',
-      publicKey: 'test_key',
+      organization: 'ACME',
+      project: 'dynamites',
+      supabaseProject: 'acmeproject',
+      supabasePublicKey: 'test_key',
       testResultsFolder: 'my-folder',
     });
   });
