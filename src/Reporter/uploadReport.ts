@@ -8,15 +8,15 @@ export async function uploadReport(
   report: JSONReport,
   options: ReporterOptions
 ) {
-  const { logger, project, target, publicKey } = options;
+  const { logger, supabaseProject, project, supabasePublicKey } = options;
 
-  const supabase = getSupabase(project, publicKey);
+  const supabase = getSupabase(supabaseProject, supabasePublicKey);
 
   const response = await supabase.functions.invoke<{ data: { id: string } }>(
     'upload-report',
     {
       body: {
-        target,
+        project,
         report,
       },
     }

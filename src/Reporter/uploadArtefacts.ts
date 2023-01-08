@@ -13,7 +13,8 @@ export async function uploadArtefacts(
   report: JSONReport,
   options: ReporterOptions
 ) {
-  const { logger, project, publicKey } = options;
+  const { logger, organization, project, supabaseProject, supabasePublicKey } =
+    options;
 
   logger.info('Starting to upload artefacts...');
 
@@ -25,20 +26,20 @@ export async function uploadArtefacts(
       r.attachments.map((a) => ({ ...a, specId: r.specId, retry: r.retry }))
     );
 
-  const supabase = getSupabase(project, publicKey);
+  const supabase = getSupabase(supabaseProject, supabasePublicKey);
 
   await Promise.all(
     failedSpecRunAttachments.map(
       async ({ specId, name, retry, path, contentType }) => {
         const result = await supabase.storage
-          .from('artefacts')
+          .from(organization)
           .upload(
-            `test-runs/${reportId}/specs/${specId}/retry-${retry}/${name}/${basename(
+            `${project}/test-runs/${reportId}/specs/${specId}/retry-${retry}/${name}/${basename(
               path
             )}`,
             await readFile(path),
             {
-              contentType: contentType,
+              contentType,
             }
           );
 

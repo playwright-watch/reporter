@@ -18,10 +18,11 @@ describe('uploadArtefacts', () => {
         errors: [],
       },
       {
-        project: PROJECT,
-        target: TARGET,
-        publicKey: KEY,
-        logger: consola.withTag('Playwright Monitor'),
+        supabaseProject: PROJECT,
+        organization: 'ACME',
+        project: TARGET,
+        supabasePublicKey: KEY,
+        logger: consola.withTag('Playwright Watch'),
       }
     );
   });
