@@ -28,12 +28,12 @@ describe('getReporters', () => {
     expect(jsonReporterName).toBe('json');
 
     expect(jsonReporterOptions).toEqual({
-      outputFile: 'test-results/playwright-monitor-report.json',
+      outputFile: 'test-results/playwright-watch-report.json',
     });
 
     const [name, options] = reporter;
 
-    expect(name).toBe('@thehatsky/playwright-monitor-reporter');
+    expect(name).toBe('@playwright-watch/playwright-watch-reporter');
 
     expect(options).toEqual({
       organization: 'ACME',
@@ -62,12 +62,12 @@ describe('getReporters', () => {
     expect(jsonReporterName).toBe('json');
 
     expect(jsonReporterOptions).toEqual({
-      outputFile: 'my-folder/playwright-monitor-report.json',
+      outputFile: 'my-folder/playwright-watch-report.json',
     });
 
     const [name, options] = reporter;
 
-    expect(name).toBe('@thehatsky/playwright-monitor-reporter');
+    expect(name).toBe('@playwright-watch/playwright-watch-reporter');
 
     expect(options).toEqual({
       organization: 'ACME',
