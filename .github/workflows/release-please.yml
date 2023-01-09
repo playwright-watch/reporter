@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@thehatsky'
+          scope: '@playwright-watch'
 
       - uses: pnpm/action-setup@v2
         if: ${{ steps.release.outputs.release_created }}

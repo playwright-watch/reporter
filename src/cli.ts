@@ -17,7 +17,7 @@ const defaultOptions: ReporterOptions = {
 };
 
 Yargs(hideBin(process.argv))
-  .scriptName('playwright-monitor-reporter')
+  .scriptName('playwright-watch-reporter')
   .usage('$0 <cmd> [args]')
   .demandCommand()
   .command<{
