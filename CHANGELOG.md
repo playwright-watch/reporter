@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://github.com/playwright-watch/playwright-watch-reporter/compare/v0.2.0...v0.3.0) (2023-01-09)
+
+
+### Features
+
+* report test artifacts, refactor Reporter ([5b032d6](https://github.com/playwright-watch/playwright-watch-reporter/commit/5b032d66dcbf4b2165b3643dad6a9acf195ffed4))
+
+
+### Bug Fixes
+
+* rename project and package ([5605ced](https://github.com/playwright-watch/playwright-watch-reporter/commit/5605cedfbf2cfc281cc73021a038dc20e927a7ff))
+
 ## [0.2.0](https://github.com/playwright-watch/playwright-watch-reporter/compare/v0.1.0...v0.2.0) (2022-12-29)
 
 ### Features
