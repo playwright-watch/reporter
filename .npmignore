@@ -1,0 +1,9 @@
+.vscode/
+.husky/
+.github/
+
+stryker.conf.json
+renovate.json
+
+.eslintrc
+.eslintignore

@@ -71,8 +71,14 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: pnpm test
 
-      - name: Publish
+      - name: Publish to GitHub
         if: ${{ steps.release.outputs.release_created }}
         run: pnpm publish dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npmjs.org
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm publish dist
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
