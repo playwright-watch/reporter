@@ -4,25 +4,7 @@ A reporter for Playwright Watch, a tool for tracking and analyzing playwright te
 
 ## Installation
 
-Package is hosted on GitHub Packages, hence you need to:
-
-1. Add `@playwright-watch` scope to your project's `.npmrc` file:
-
-```properties
-# Project's local .npmrc file
-# ...
-@playwright-watch:registry=https://npm.pkg.github.com
-```
-
-2. [Generate a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with scope `read:packages`
-
-3. Add it to your global `~/.npmrc` file:
-
-```properties
-//npm.pkg.github.com/:_authToken=<your_read_acess_token>
-```
-
-Now you can install package with `npm`, `yarn`, or `pnpm`:
+Install package with `npm`, `yarn`, or `pnpm`:
 
 ```sh
 npm install --save-dev @playwright-watch/playwright-watch-reporter
