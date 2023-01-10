@@ -71,14 +71,9 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
         run: pnpm test
 
-      - name: Publish to GitHub
-        if: ${{ steps.release.outputs.release_created }}
-        run: pnpm publish dist
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Publish to npmjs.org
+        working-directory: ./dist
         if: ${{ steps.release.outputs.release_created }}
-        run: pnpm publish dist
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm publish --@playwright-watch:registry=https://registry.npmjs.org
