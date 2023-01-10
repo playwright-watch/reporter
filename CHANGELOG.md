@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/playwright-watch/reporter/compare/v0.4.0...v0.4.1) (2023-01-10)
+
+
+### Bug Fixes
+
+* rename package ([b85d4a6](https://github.com/playwright-watch/reporter/commit/b85d4a68eb12e0b5ff0797b319bbc34bfa466b81))
+
 ## [0.4.0](https://github.com/playwright-watch/playwright-watch-reporter/compare/v0.3.0...v0.4.0) (2023-01-10)
 
 
