@@ -33,7 +33,7 @@ describe('getReporters', () => {
 
     const [name, options] = reporter;
 
-    expect(name).toBe('@playwright-watch/playwright-watch-reporter');
+    expect(name).toBe('@playwright-watch/reporter');
 
     expect(options).toEqual({
       organization: 'ACME',
@@ -67,7 +67,7 @@ describe('getReporters', () => {
 
     const [name, options] = reporter;
 
-    expect(name).toBe('@playwright-watch/playwright-watch-reporter');
+    expect(name).toBe('@playwright-watch/reporter');
 
     expect(options).toEqual({
       organization: 'ACME',
