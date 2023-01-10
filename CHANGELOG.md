@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/playwright-watch/playwright-watch-reporter/compare/v0.3.0...v0.4.0) (2023-01-10)
+
+
+### Features
+
+* add publish to npmjs ([7d67616](https://github.com/playwright-watch/playwright-watch-reporter/commit/7d67616327c6c08777e0e89450ce3e8b89130e91))
+
 ## [0.3.0](https://github.com/playwright-watch/playwright-watch-reporter/compare/v0.2.0...v0.3.0) (2023-01-09)
 
 
