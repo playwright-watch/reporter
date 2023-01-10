@@ -1,5 +1,5 @@
 {
-  "name": "@playwright-watch/playwright-watch-reporter",
+  "name": "@playwright-watch/reporter",
   "version": "0.4.0",
   "description": "",
   "main": "index.js",
