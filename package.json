@@ -1,10 +1,11 @@
 {
   "name": "@playwright-watch/reporter",
   "version": "0.4.0",
-  "description": "",
+  "description": "A reporter for Playwright Watch, a tool for tracking and analyzing playwright test results.",
   "main": "index.js",
   "types": "index.d.ts",
   "type": "commonjs",
+  "repository": "playwright-watch/reporter",
   "bin": {
     "playwright-watch-reporter": "cli.cjs"
   },
@@ -15,7 +16,7 @@
     "test:mutations": "stryker run"
   },
   "keywords": [],
-  "author": "Artem Sakhatskiy",
+  "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.7",
