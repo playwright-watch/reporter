@@ -146,6 +146,7 @@ describe('Reporter', () => {
 
     expect(functionsInvoke).toBeCalledWith('upload-report', {
       body: {
+        organization: defaultOptions.organization,
         project: defaultOptions.project,
         report: report,
       },

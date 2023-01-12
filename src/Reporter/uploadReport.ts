@@ -1,5 +1,4 @@
 import type { JSONReport } from '@playwright/test/reporter';
-import axios from 'axios';
 import { getSupabase } from '../supabase';
 import type { ReporterOptions } from '../types';
 import { uploadArtefacts } from './uploadArtefacts';
@@ -8,7 +7,8 @@ export async function uploadReport(
   report: JSONReport,
   options: ReporterOptions
 ) {
-  const { logger, supabaseProject, project, supabasePublicKey } = options;
+  const { logger, supabaseProject, project, supabasePublicKey, organization } =
+    options;
 
   const supabase = getSupabase(supabaseProject, supabasePublicKey);
 
@@ -16,6 +16,7 @@ export async function uploadReport(
     'upload-report',
     {
       body: {
+        organization,
         project,
         report,
       },
