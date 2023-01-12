@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/playwright-watch/reporter/compare/v0.4.2...v0.4.3) (2023-01-12)
+
+
+### Bug Fixes
+
+* add api_key to request ([4e47363](https://github.com/playwright-watch/reporter/commit/4e473633fd4bfe3f7ed7c65b94e28123547f0f6b))
+
 ## [0.4.2](https://github.com/playwright-watch/reporter/compare/v0.4.0...v0.4.2) (2023-01-12)
 
 
