@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/playwright-watch/reporter/compare/v0.4.0...v0.4.1) (2023-01-12)
+
+
+### Bug Fixes
+
+* add organization to upload-report call ([822aa9a](https://github.com/playwright-watch/reporter/commit/822aa9a817532f4dba47833d59c0cb00dd6ab57e))
+* rename package ([b85d4a6](https://github.com/playwright-watch/reporter/commit/b85d4a68eb12e0b5ff0797b319bbc34bfa466b81))
+
 ## [0.4.1](https://github.com/playwright-watch/reporter/compare/v0.4.0...v0.4.1) (2023-01-10)
 
 
