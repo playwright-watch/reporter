@@ -27,6 +27,7 @@ const fsMock = fs as jest.Mocked<typeof fs>;
 
 const defaultOptions = {
   organization: 'ACME',
+  api_key: 'apikey',
   project: 'dynamites',
   supabaseProject: 'acmeproject',
   supabasePublicKey: 'test_key',
@@ -147,6 +148,7 @@ describe('Reporter', () => {
     expect(functionsInvoke).toBeCalledWith('upload-report', {
       body: {
         organization: defaultOptions.organization,
+        api_key: defaultOptions.api_key,
         project: defaultOptions.project,
         report: report,
       },

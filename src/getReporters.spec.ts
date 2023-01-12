@@ -14,6 +14,7 @@ describe('getReporters', () => {
   test("Default reporter for project 'ACME'", () => {
     const reporters = getReporters({
       organization: 'ACME',
+      api_key: 'key',
       project: 'dynamites',
       supabaseProject: 'acmeproject',
       supabasePublicKey: 'test_key',
@@ -37,6 +38,7 @@ describe('getReporters', () => {
 
     expect(options).toEqual({
       organization: 'ACME',
+      api_key: 'key',
       project: 'dynamites',
       supabaseProject: 'acmeproject',
       supabasePublicKey: 'test_key',
@@ -46,6 +48,7 @@ describe('getReporters', () => {
   test("Default reporter for project 'ACME' with custom report folder", () => {
     const reporters = getReporters({
       organization: 'ACME',
+      api_key: 'key',
       project: 'dynamites',
       supabaseProject: 'acmeproject',
       supabasePublicKey: 'test_key',
@@ -71,6 +74,7 @@ describe('getReporters', () => {
 
     expect(options).toEqual({
       organization: 'ACME',
+      api_key: 'key',
       project: 'dynamites',
       supabaseProject: 'acmeproject',
       supabasePublicKey: 'test_key',

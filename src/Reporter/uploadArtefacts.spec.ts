@@ -20,6 +20,7 @@ describe('uploadArtefacts', () => {
       {
         supabaseProject: PROJECT,
         organization: 'ACME',
+        api_key: 'key',
         project: TARGET,
         supabasePublicKey: KEY,
         logger: consola.withTag('Playwright Watch'),
