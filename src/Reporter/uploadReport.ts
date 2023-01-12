@@ -7,8 +7,14 @@ export async function uploadReport(
   report: JSONReport,
   options: ReporterOptions
 ) {
-  const { logger, supabaseProject, project, supabasePublicKey, organization } =
-    options;
+  const {
+    logger,
+    supabaseProject,
+    project,
+    supabasePublicKey,
+    organization,
+    api_key,
+  } = options;
 
   const supabase = getSupabase(supabaseProject, supabasePublicKey);
 
@@ -17,6 +23,7 @@ export async function uploadReport(
     {
       body: {
         organization,
+        api_key,
         project,
         report,
       },
