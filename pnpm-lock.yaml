@@ -17,6 +17,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.49.0
   axios: ^1.2.5
   consola: ^2.15.3
+  dotenv: ^16.0.3
   esbuild: ^0.16.17
   eslint: ^8.32.0
   eslint-config-prettier: ^8.6.0
@@ -52,6 +53,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.49.0_7uibuqfxkfaozanbtbziikiqje
   axios: 1.2.5
   consola: 2.15.3
+  dotenv: 16.0.3
   esbuild: 0.16.17
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
@@ -2140,6 +2142,11 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: true
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /eastasianwidth/0.2.0:

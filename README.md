@@ -32,8 +32,9 @@ const config: PlaywrightTestConfig = {
   reporter: [
     // ...
     ...getReporters({
-      organization: '<your_organization_name>',
-      project: '<your_project_name>',
+      organization: '<your_organization_slug>',
+      project: '<your_project_slug>',
+      api_ket: '<your_organization_api_key>',
       supabaseProject: '<playwright_watch_supabase_project>',
       supabasePublicKey: '<playwright_watch_supabase_public_key>',
     }),
@@ -51,7 +52,12 @@ A reporter can be used as a command-line tool.
 
 The following environment variables need to be set in order for the app to function properly:
 
-- `PLAYWRIGHT_WATCH_ORGANIZATION`: Your organization slug
-- `PLAYWRIGHT_WATCH_PROJECT`: Project of the report
-- `SUPABASE_PROJECT`: Supabase project ID
-- `SUPABASE_KEY`: Public key of your supabase project
+- `PLAYWRIGHT_WATCH_ORGANIZATION`: Your organization slug. Can be found [ organization's settings](https://playwright.watch/settings).
+- `PLAYWRIGHT_WATCH_API_KEY`: Your organization API key. Can be viewed [in organization's settings](https://playwright.watch/settings).
+
+> **Warning**
+> API key should be stored securely. Do not commit it in your repository.
+
+- `PLAYWRIGHT_WATCH_PROJECT`: Project of the report. Projects can be created [at projects list](https://playwright.watch/projects).
+- `PLAYWRIGHT_WATCH_SUPABASE_PROJECT`: Supabase project ID.
+- `PLAYWRIGHT_WATCH_SUPABASE_PUBLIC_KEY`: Public key of your supabase project.

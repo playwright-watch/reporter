@@ -35,6 +35,7 @@
     "@typescript-eslint/parser": "^5.49.0",
     "axios": "^1.2.5",
     "consola": "^2.15.3",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.16.17",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
