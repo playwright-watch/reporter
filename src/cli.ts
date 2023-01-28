@@ -8,10 +8,11 @@ import { uploadArtefacts } from './Reporter/uploadArtefacts';
 import { ReporterOptions } from './types';
 
 const defaultOptions: ReporterOptions = {
-  supabaseProject: process.env.SUPABASE_PROJECT,
-  supabasePublicKey: process.env.SUPABASE_KEY,
+  supabaseProject: process.env.PLAYWRIGHT_WATCH_SUPABASE_PROJECT,
+  supabasePublicKey: process.env.PLAYWRIGHT_WATCH_SUPABASE_PUBLIC_KEY,
   organization: process.env.PLAYWRIGHT_WATCH_ORGANIZATION,
   project: process.env.PLAYWRIGHT_WATCH_PROJECT,
+  api_key: process.env.PLAYWRIGHT_WATCH_API_KET,
   logger: consola.withTag('Playwright Watch'),
   testResultsFolder: '',
 };
