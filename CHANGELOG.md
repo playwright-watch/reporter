@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0](https://github.com/playwright-watch/reporter/compare/v0.4.3...v1.0.0) (2023-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **security:** secure artefacts uploading
+
+### Features
+
+* add environt variables fallback ([f9a4f3a](https://github.com/playwright-watch/reporter/commit/f9a4f3aaca935d41208de1a0c2876c83b7af3200))
+* **security:** secure artefacts uploading ([c939ada](https://github.com/playwright-watch/reporter/commit/c939ada7de56d6f3228e5eb97bda8aa1a2f697b4))
+
 ## [0.4.3](https://github.com/playwright-watch/reporter/compare/v0.4.2...v0.4.3) (2023-01-12)
 
 
