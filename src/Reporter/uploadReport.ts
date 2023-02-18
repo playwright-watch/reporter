@@ -19,9 +19,10 @@ export async function uploadReport(
   const supabase = getSupabase(supabaseProject, supabasePublicKey);
 
   const response = await supabase.functions.invoke<{ data: { id: string } }>(
-    'upload-report',
+    'protected',
     {
       body: {
+        command: 'upload-report',
         organization,
         api_key,
         project,

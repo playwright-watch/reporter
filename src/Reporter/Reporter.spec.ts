@@ -145,8 +145,9 @@ describe('Reporter', () => {
 
     await reporter.onEnd();
 
-    expect(functionsInvoke).toBeCalledWith('upload-report', {
+    expect(functionsInvoke).toBeCalledWith('protected', {
       body: {
+        command: 'upload-report',
         organization: defaultOptions.organization,
         api_key: defaultOptions.api_key,
         project: defaultOptions.project,
