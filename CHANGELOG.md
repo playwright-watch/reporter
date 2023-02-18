@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/playwright-watch/reporter/compare/v1.0.0...v2.0.0) (2023-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* use protected command API to upload reports
+
+### Code Refactoring
+
+* use protected command API to upload reports ([915f365](https://github.com/playwright-watch/reporter/commit/915f365c0bc43d9c6007e16fa527f7c3476c568f))
+
 ## [1.0.0](https://github.com/playwright-watch/reporter/compare/v0.4.3...v1.0.0) (2023-02-12)
 
 
