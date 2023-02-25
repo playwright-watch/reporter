@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/playwright-watch/reporter/compare/v2.0.0...v2.1.0) (2023-02-25)
+
+
+### Features
+
+* add opt-in telemetry collection via Sentry ([fb64145](https://github.com/playwright-watch/reporter/commit/fb64145af70c30b694cd1f50d3f031823830c82f))
+
 ## [2.0.0](https://github.com/playwright-watch/reporter/compare/v1.0.0...v2.0.0) (2023-02-18)
 
 
