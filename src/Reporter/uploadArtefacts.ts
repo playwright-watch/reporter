@@ -3,8 +3,9 @@ import type {
   JSONReportSpec,
   JSONReportSuite,
 } from '@playwright/test/reporter';
-import { basename } from 'path';
+import * as Sentry from '@sentry/node';
 import { readFile } from 'fs/promises';
+import { basename } from 'path';
 import { getSupabase } from '../supabase';
 import type { ReporterOptions } from '../types';
 
@@ -53,12 +54,13 @@ export async function uploadArtefacts(
           },
         });
 
-        if (result.error != null)
+        if (result.error != null) {
           logger.error(
             `Failed to upload attachement ${path} (${name}) for spec #${specId}`,
             result.error
           );
-        else
+          Sentry.captureException(result.error);
+        } else
           logger.debug(
             `Uploaded attachement ${path} (${name}) for spec #${specId}`
           );

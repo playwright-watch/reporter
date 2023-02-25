@@ -60,4 +60,11 @@ export interface ReporterOptions {
    * @default test-results
    */
   testResultsFolder?: string;
+
+  /**
+   * Allow @playwright-watch to collect telemetry via Senty
+   *
+   * @default false
+   */
+  allowTelemetry?: boolean;
 }

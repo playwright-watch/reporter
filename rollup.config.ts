@@ -12,6 +12,8 @@ const external = [
   'yargs',
   'yargs/helpers',
   '@supabase/supabase-js',
+  '@sentry/node',
+  '@sentry/tracing',
 ];
 
 const config: RollupOptions[] = [

@@ -1,4 +1,6 @@
 import { describe, it, jest } from '@jest/globals';
+import { expect } from '@playwright/test';
+import * as Sentry from '@sentry/node';
 import consola from 'consola';
 import { uploadArtefacts } from './uploadArtefacts';
 
@@ -13,6 +15,12 @@ const storageFrom = jest.fn(() => ({
   upload: storageUpload,
 }));
 
+jest.mock('fs/promises', () => ({
+  readFile() {
+    return 'Hello!';
+  },
+}));
+
 jest.mock('../supabase', () => ({
   getSupabase: () => ({
     functions: {
@@ -23,6 +31,8 @@ jest.mock('../supabase', () => ({
     },
   }),
 }));
+
+const captureException = jest.spyOn(Sentry, 'captureException');
 
 describe('uploadArtefacts', () => {
   it('Uploads something', async () => {
@@ -44,5 +54,57 @@ describe('uploadArtefacts', () => {
         logger: consola.withTag('Playwright Watch'),
       }
     );
+  });
+
+  it('Logs to sentry if upload fails', async () => {
+    const error = new Error('Some error');
+
+    functionsInvoke.mockImplementationOnce(() => ({
+      error,
+      data: null,
+    }));
+
+    await uploadArtefacts(
+      '',
+      {
+        suites: [
+          {
+            specs: [
+              {
+                tests: [
+                  {
+                    results: [
+                      {
+                        status: 'failed',
+                        attachments: [
+                          {
+                            name: 'test',
+                            path: 'test',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ] as any[],
+        config: {
+          projects: [],
+        } as any,
+        errors: [],
+      },
+      {
+        supabaseProject: PROJECT,
+        organization: 'ACME',
+        api_key: 'key',
+        project: TARGET,
+        supabasePublicKey: KEY,
+        logger: consola.withTag('Playwright Watch'),
+      }
+    );
+
+    expect(captureException.mock.calls[0]).toEqual([error]);
   });
 });
