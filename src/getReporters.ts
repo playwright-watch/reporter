@@ -1,7 +1,7 @@
 import type { ReporterDescription } from '@playwright/test/types/test';
 import { name } from '../package.json';
 import type { ReporterOptions } from './types';
-import { getOutput } from './getOutput';
+import { getHtmlOutput, getJsonOutput } from './getOutput';
 
 export function getReporters(
   options: Partial<ReporterOptions> = {}
@@ -18,13 +18,21 @@ export function getReporters(
   if (filledOptions.supabasePublicKey == null)
     throw new Error('Supabase public key is required.');
 
-  const { reportFile } = getOutput(filledOptions);
+  const { reportFile } = getJsonOutput(filledOptions);
 
   const reporterName = process.env.PLAYWRIGHT_WATCH_E2E_TEST_RUN
     ? './src'
     : name;
 
   return [
+    [
+      'html',
+      {
+        outputFolder: getHtmlOutput(filledOptions).folder,
+        open: 'never',
+        attachmentsBaseURL: `https://${filledOptions.supabaseProject}.functions.supabase.co/get-artefact?asset=${filledOptions.organization}.`,
+      },
+    ],
     ['json', { outputFile: reportFile }],
     [reporterName, filledOptions],
   ];

@@ -20,9 +20,19 @@ describe('getReporters', () => {
       supabasePublicKey: 'test_key',
     });
 
-    expect(reporters.length).toBe(2);
+    expect(reporters.length).toBe(3);
 
-    const [jsonReporter, reporter] = reporters;
+    const [htmlReporter, jsonReporter, reporter] = reporters;
+
+    const [htmlReporterName, htmlReporterOptions] = htmlReporter;
+
+    expect(htmlReporterName).toBe('html');
+    expect(htmlReporterOptions).toEqual({
+      outputFolder: 'playwright-report',
+      open: 'never',
+      attachmentsBaseURL:
+        'https://acmeproject.functions.supabase.co/get-artefact?asset=ACME.',
+    });
 
     const [jsonReporterName, jsonReporterOptions] = jsonReporter;
 
@@ -56,9 +66,18 @@ describe('getReporters', () => {
       testResultsFolder: 'my-folder',
     });
 
-    expect(reporters.length).toBe(2);
+    expect(reporters.length).toBe(3);
 
-    const [jsonReporter, reporter] = reporters;
+    const [htmlReporter, jsonReporter, reporter] = reporters;
+
+    const [htmlReporterName, htmlReporterOptions] = htmlReporter;
+    expect(htmlReporterName).toBe('html');
+    expect(htmlReporterOptions).toEqual({
+      outputFolder: 'playwright-report',
+      open: 'never',
+      attachmentsBaseURL:
+        'https://acmeproject.functions.supabase.co/get-artefact?asset=ACME.',
+    });
 
     const [jsonReporterName, jsonReporterOptions] = jsonReporter;
 
