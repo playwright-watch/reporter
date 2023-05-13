@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/playwright-watch/reporter/compare/v2.1.0...v2.2.0) (2023-05-13)
+
+
+### Features
+
+* upload html base64 report summary ([2cefffd](https://github.com/playwright-watch/reporter/commit/2cefffd32a3877c9e67d7cb83946134840107da5))
+
 ## [2.1.0](https://github.com/playwright-watch/reporter/compare/v2.0.0...v2.1.0) (2023-02-25)
 
 
