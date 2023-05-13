@@ -42,12 +42,12 @@ jobs:
         run: pnpm install
 
       - name: Install Playwright Browsers
-        run: pnpm dlx playwright@1.31.1 install --with-deps
+        run: pnpm dlx playwright@1.33.0 install --with-deps
 
       - name: Run Playwright tests
         run: |
-          pnpm dlx playwright@1.31.1 test --config ./playwright.arrange.config.ts || true
-          pnpm dlx playwright@1.31.1 test
+          pnpm dlx playwright@1.33.0 test --config ./playwright.arrange.config.ts || true
+          pnpm dlx playwright@1.33.0 test
         env:
           PLAYWRIGHT_WATCH_ORGANIZATION: ${{ vars.PLAYWRIGHT_WATCH_ORGANIZATION }}
           PLAYWRIGHT_WATCH_PROJECT: ${{ vars.PLAYWRIGHT_WATCH_PROJECT }}
