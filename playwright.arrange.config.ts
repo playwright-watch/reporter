@@ -7,9 +7,9 @@ const config: PlaywrightTestConfig = {
 
   testDir: './e2e/arrange',
   reporter: [
-    ['html'],
     ...getReporters({
       project: 'arranged-tests',
+      allowTelemetry: true,
     }),
   ],
 };

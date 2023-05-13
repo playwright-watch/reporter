@@ -157,7 +157,8 @@ describe('Reporter', () => {
 
     expect(storageFrom).not.toBeCalled();
     expect(logger.error).not.toBeCalled();
-    expect(logger.debug).not.toBeCalled();
+    expect(logger.debug).toBeCalledWith('Uploaded base64 HTML report');
+    expect(logger.info).toBeCalledWith('HTML report summary uploaded');
     expect(logger.info).toBeCalledWith('Report summary uploaded to dashboard');
   });
 

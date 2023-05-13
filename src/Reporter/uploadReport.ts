@@ -2,6 +2,7 @@ import type { JSONReport } from '@playwright/test/reporter';
 import { getSupabase } from '../supabase';
 import type { ReporterOptions } from '../types';
 import { uploadArtefacts } from './uploadArtefacts';
+import { uploadHtmlReportSummary } from './uploadHtmlReportSummary';
 
 export async function uploadReport(
   report: JSONReport,
@@ -40,6 +41,8 @@ export async function uploadReport(
   const { data } = response.data;
 
   logger.info('Report summary uploaded to dashboard');
+
+  await uploadHtmlReportSummary(data.id, options);
 
   await uploadArtefacts(data.id, report, options);
 
