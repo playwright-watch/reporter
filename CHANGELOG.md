@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/playwright-watch/reporter/compare/v2.2.0...v2.2.1) (2023-06-15)
+
+
+### Bug Fixes
+
+* add support for setting root directory of the host project ([a64815f](https://github.com/playwright-watch/reporter/commit/a64815f338ce2bb20d300f76d39a4440c3cb3eda))
+
 ## [2.2.0](https://github.com/playwright-watch/reporter/compare/v2.1.0...v2.2.0) (2023-05-13)
 
 
