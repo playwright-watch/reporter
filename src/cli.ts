@@ -8,6 +8,7 @@ import { uploadArtefacts } from './Reporter/uploadArtefacts';
 import { ReporterOptions } from './types';
 
 const defaultOptions: ReporterOptions = {
+  rootFolder: process.cwd(),
   supabaseProject: process.env.PLAYWRIGHT_WATCH_SUPABASE_PROJECT,
   supabasePublicKey: process.env.PLAYWRIGHT_WATCH_SUPABASE_PUBLIC_KEY,
   organization: process.env.PLAYWRIGHT_WATCH_ORGANIZATION,

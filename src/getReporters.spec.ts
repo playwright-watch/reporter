@@ -47,6 +47,7 @@ describe('getReporters', () => {
     expect(name).toBe('@playwright-watch/reporter');
 
     expect(options).toEqual({
+      rootFolder: '.',
       organization: 'ACME',
       api_key: 'key',
       project: 'dynamites',
@@ -57,6 +58,7 @@ describe('getReporters', () => {
 
   test("Default reporter for project 'ACME' with custom report folder", () => {
     const reporters = getReporters({
+      rootFolder: '.',
       organization: 'ACME',
       api_key: 'key',
       project: 'dynamites',
@@ -92,6 +94,7 @@ describe('getReporters', () => {
     expect(name).toBe('@playwright-watch/reporter');
 
     expect(options).toEqual({
+      rootFolder: '.',
       organization: 'ACME',
       api_key: 'key',
       project: 'dynamites',

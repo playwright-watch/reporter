@@ -2,17 +2,22 @@ import { join } from 'path';
 import type { ReporterOptions } from './types';
 
 export function getJsonOutput({
+  rootFolder,
   testResultsFolder = 'test-results',
 }: ReporterOptions) {
   return {
-    reportFile: join(testResultsFolder, 'playwright-watch-report.json'),
+    reportFile: join(
+      rootFolder,
+      testResultsFolder,
+      'playwright-watch-report.json'
+    ),
   };
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getHtmlOutput(_: ReporterOptions) {
+export function getHtmlOutput({ rootFolder }: ReporterOptions) {
   return {
-    folder: 'playwright-report',
-    htmlFile: join('playwright-report', 'index.html'),
+    folder: join(rootFolder, 'playwright-report'),
+    htmlFile: join(rootFolder, 'playwright-report', 'index.html'),
   };
 }
