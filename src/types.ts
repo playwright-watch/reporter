@@ -4,6 +4,11 @@ export type Logger = Pick<Console | Consola, 'debug' | 'info' | 'error'>;
 
 export interface ReporterOptions {
   /**
+   * Path to root directory where test folders will be created.
+   */
+  rootFolder: string;
+
+  /**
    * Organization's slug name.
    *
    * Can be found at https://playwright.watch/settings.

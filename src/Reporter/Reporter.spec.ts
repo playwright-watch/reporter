@@ -31,6 +31,7 @@ const defaultOptions = {
   project: 'dynamites',
   supabaseProject: 'acmeproject',
   supabasePublicKey: 'test_key',
+  rootFolder: '.',
 };
 
 describe('Reporter', () => {

@@ -46,6 +46,7 @@ describe('uploadArtefacts', () => {
         errors: [],
       },
       {
+        rootFolder: '.',
         supabaseProject: PROJECT,
         organization: 'ACME',
         api_key: 'key',
@@ -96,6 +97,7 @@ describe('uploadArtefacts', () => {
         errors: [],
       },
       {
+        rootFolder: '.',
         supabaseProject: PROJECT,
         organization: 'ACME',
         api_key: 'key',
