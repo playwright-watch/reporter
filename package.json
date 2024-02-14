@@ -14,7 +14,7 @@
     "test": "jest",
     "ci:publish": "pnpm publish -r",
     "test:mutations": "stryker run",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "keywords": [],
   "author": "Artem Sakhatskiy <sakhatskiy@yahoo.com>",
