@@ -42,8 +42,11 @@ describe('uploadArtefacts', () => {
         suites: [],
         config: {
           projects: [],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any,
         errors: [],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        stats: {} as any,
       },
       {
         rootFolder: '.',
@@ -53,7 +56,7 @@ describe('uploadArtefacts', () => {
         project: TARGET,
         supabasePublicKey: KEY,
         logger: consola.withTag('Playwright Watch'),
-      }
+      },
     );
   });
 
@@ -90,11 +93,15 @@ describe('uploadArtefacts', () => {
               },
             ],
           },
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ] as any[],
         config: {
           projects: [],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any,
         errors: [],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        stats: {} as any,
       },
       {
         rootFolder: '.',
@@ -104,7 +111,7 @@ describe('uploadArtefacts', () => {
         project: TARGET,
         supabasePublicKey: KEY,
         logger: consola.withTag('Playwright Watch'),
-      }
+      },
     );
 
     expect(captureException.mock.calls[0]).toEqual([error]);

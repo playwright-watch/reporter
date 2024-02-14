@@ -12,7 +12,7 @@ import type { ReporterOptions } from '../types';
 export async function uploadArtefacts(
   reportId: string,
   report: JSONReport,
-  options: ReporterOptions
+  options: ReporterOptions,
 ) {
   const {
     logger,
@@ -30,7 +30,7 @@ export async function uploadArtefacts(
     .flatMap((t) => t.results.map((r) => ({ ...r, specId: t.specId })))
     .filter((r) => r.status === 'failed')
     .flatMap((r) =>
-      r.attachments.map((a) => ({ ...a, specId: r.specId, retry: r.retry }))
+      r.attachments.map((a) => ({ ...a, specId: r.specId, retry: r.retry })),
     );
 
   const supabase = getSupabase(supabaseProject, supabasePublicKey);
@@ -39,7 +39,7 @@ export async function uploadArtefacts(
     failedSpecRunAttachments.map(
       async ({ specId, name, retry, path, contentType }) => {
         const filePath = `${project}/test-runs/${reportId}/specs/${specId}/retry-${retry}/${name}/${basename(
-          path
+          path,
         )}`;
         const fileBase64 = await readFile(path, { encoding: 'base64' });
 
@@ -57,15 +57,15 @@ export async function uploadArtefacts(
         if (result.error != null) {
           logger.error(
             `Failed to upload attachement ${path} (${name}) for spec #${specId}`,
-            result.error
+            result.error,
           );
           Sentry.captureException(result.error);
         } else
           logger.debug(
-            `Uploaded attachement ${path} (${name}) for spec #${specId}`
+            `Uploaded attachement ${path} (${name}) for spec #${specId}`,
           );
-      }
-    )
+      },
+    ),
   );
 
   logger.info('Attachments uploaded');

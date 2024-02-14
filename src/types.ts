@@ -1,6 +1,9 @@
-import type { Consola } from 'consola';
+import type { createConsola } from 'consola';
 
-export type Logger = Pick<Console | Consola, 'debug' | 'info' | 'error'>;
+export type Logger = Pick<
+  Console | ReturnType<typeof createConsola>,
+  'debug' | 'info' | 'error'
+>;
 
 export interface ReporterOptions {
   /**

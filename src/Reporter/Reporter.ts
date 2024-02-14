@@ -50,7 +50,7 @@ export class Reporter implements ReporterBase {
 
     if (this.errorInWorkerProcess != null) {
       logger.info(
-        "There's an error in worker process, report will not be uploaded"
+        "There's an error in worker process, report will not be uploaded",
       );
       return;
     }

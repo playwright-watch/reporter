@@ -9,7 +9,7 @@ export function getJsonOutput({
     reportFile: join(
       rootFolder,
       testResultsFolder,
-      'playwright-watch-report.json'
+      'playwright-watch-report.json',
     ),
   };
 }

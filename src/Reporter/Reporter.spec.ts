@@ -121,7 +121,7 @@ describe('Reporter', () => {
     expect(logger.error).not.toBeCalled();
     expect(logger.debug).not.toBeCalled();
     expect(logger.info).toBeCalledWith(
-      "There's an error in worker process, report will not be uploaded"
+      "There's an error in worker process, report will not be uploaded",
     );
   });
 
@@ -186,7 +186,7 @@ describe('Reporter', () => {
 
     expect(logger.error).toBeCalledWith(
       'Failed to upload report to dashboard',
-      error
+      error,
     );
     expect(logger.debug).not.toBeCalled();
     expect(logger.info).not.toBeCalled();
