@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/playwright-watch/reporter/compare/v2.2.1...v2.3.0) (2024-02-14)
+
+
+### Features
+
+* add projects handling ([3f93c8f](https://github.com/playwright-watch/reporter/commit/3f93c8fabbc8aae23376260c1bad47c4fe135250))
+
 ## [2.2.1](https://github.com/playwright-watch/reporter/compare/v2.2.0...v2.2.1) (2023-06-15)
 
 
