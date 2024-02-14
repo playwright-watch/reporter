@@ -56,7 +56,7 @@ jobs:
           PLAYWRIGHT_WATCH_SUPABASE_PUBLIC_KEY: ${{ secrets.PLAYWRIGHT_WATCH_SUPABASE_PUBLIC_KEY }}
           PLAYWRIGHT_WATCH_E2E_TEST_RUN: true
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
