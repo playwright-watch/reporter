@@ -42,6 +42,6 @@ Yargs(hideBin(process.argv))
       const report = await getReport(options);
 
       uploadArtefacts('98c3ed27-5a75-4506-893a-6a8d454347a3', report, options);
-    }
+    },
   )
   .help().argv;

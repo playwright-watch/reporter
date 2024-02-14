@@ -6,7 +6,7 @@ import { uploadHtmlReportSummary } from './uploadHtmlReportSummary';
 
 export async function uploadReport(
   report: JSONReport,
-  options: ReporterOptions
+  options: ReporterOptions,
 ) {
   const {
     logger,
@@ -29,7 +29,7 @@ export async function uploadReport(
         project,
         report,
       },
-    }
+    },
   );
 
   if (response.error != null || response.data == null) {

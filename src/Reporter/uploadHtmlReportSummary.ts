@@ -7,7 +7,7 @@ import { getHtmlOutput } from '../getOutput';
 
 export async function uploadHtmlReportSummary(
   reportId: string,
-  options: ReporterOptions
+  options: ReporterOptions,
 ) {
   const {
     logger,
@@ -22,7 +22,7 @@ export async function uploadHtmlReportSummary(
 
   const htmlReportFile = await readFile(getHtmlOutput(options).htmlFile);
   const htmlBase64Report = extractBase64ReportFromHtml(
-    htmlReportFile.toString()
+    htmlReportFile.toString(),
   );
 
   const supabase = getSupabase(supabaseProject, supabasePublicKey);

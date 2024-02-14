@@ -1,10 +1,10 @@
-import type { ReporterDescription } from '@playwright/test/types/test';
+import type { ReporterDescription } from 'playwright/types/test';
 import { name } from '../package.json';
-import type { ReporterOptions } from './types';
 import { getHtmlOutput, getJsonOutput } from './getOutput';
+import type { ReporterOptions } from './types';
 
 export function getReporters(
-  options: Partial<ReporterOptions> = {}
+  options: Partial<ReporterOptions> = {},
 ): ReporterDescription[] {
   const filledOptions: ReporterOptions = {
     organization: process.env.PLAYWRIGHT_WATCH_ORGANIZATION,
