@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.1](https://github.com/playwright-watch/reporter/compare/v2.3.0...v2.3.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* fix publish script ([436f1da](https://github.com/playwright-watch/reporter/commit/436f1da5bf1977764f64d3dbaa4bbdb428465386))
+
 ## [2.3.0](https://github.com/playwright-watch/reporter/compare/v2.2.1...v2.3.0) (2024-02-14)
 
 
