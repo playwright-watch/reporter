@@ -36,10 +36,10 @@ devDependencies:
     version: 11.1.6(rollup@4.10.0)(tslib@2.6.2)(typescript@5.3.3)
   '@stryker-mutator/core':
     specifier: ^8.2.3
-    version: 8.2.3
+    version: 8.2.5
   '@stryker-mutator/jest-runner':
     specifier: ^8.2.3
-    version: 8.2.3(@stryker-mutator/core@8.2.3)
+    version: 8.2.5(@stryker-mutator/core@8.2.5)
   '@supabase/supabase-js':
     specifier: ^2.39.6
     version: 2.39.6
@@ -1393,8 +1393,8 @@ packages:
       '@sinonjs/commons': 3.0.1
     dev: true
 
-  /@stryker-mutator/api@8.2.3:
-    resolution: {integrity: sha512-UUHMMOv9lc88i8t+r90LmuQeK4qmrrZ6F4LhTyAiUftKyY0yLyTTUFHtDl/hApUG/q2tsH7v7Z81/29zSWp+yQ==}
+  /@stryker-mutator/api@8.2.5:
+    resolution: {integrity: sha512-cQmngePqTLIeKbV/aCE258dK0CDofcLiG9WRvOAQu2yHJdAoHro7uy9ZyAeY5rmMvvWj/SfrriiGp4c7CTjyRA==}
     engines: {node: '>=18.0.0'}
     dependencies:
       mutation-testing-metrics: 3.0.2
@@ -1403,14 +1403,14 @@ packages:
       typed-inject: 4.0.0
     dev: true
 
-  /@stryker-mutator/core@8.2.3:
-    resolution: {integrity: sha512-egwVVyXCXoGR2shUPwkPgSApPsfMlK5xDsPsdaXyOmg7CXtIcpCxgsiy2tcJPnvlu2Ws7G3PlF2tqy7k2FX1hg==}
+  /@stryker-mutator/core@8.2.5:
+    resolution: {integrity: sha512-K5fLQlpoHZNAkxgmNtafQZ2BEFZCMvn7wweaIml8+EnRQQAENZcFqd82gERDuJENAq3CXzEJ2WvJ+yfDuUEb3Q==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
-      '@stryker-mutator/api': 8.2.3
-      '@stryker-mutator/instrumenter': 8.2.3
-      '@stryker-mutator/util': 8.2.3
+      '@stryker-mutator/api': 8.2.5
+      '@stryker-mutator/instrumenter': 8.2.5
+      '@stryker-mutator/util': 8.2.5
       ajv: 8.12.0
       chalk: 5.3.0
       commander: 11.1.0
@@ -1420,7 +1420,7 @@ packages:
       file-url: 4.0.0
       get-port: 7.0.0
       glob: 10.3.10
-      inquirer: 9.2.14
+      inquirer: 9.2.15
       lodash.groupby: 4.6.0
       log4js: 6.9.1
       minimatch: 9.0.3
@@ -1440,8 +1440,8 @@ packages:
       - supports-color
     dev: true
 
-  /@stryker-mutator/instrumenter@8.2.3:
-    resolution: {integrity: sha512-Mgor20apuHZEXH0Bwa9spLHEISIqQXCQy0SCr4uSSwC5/Jmz38AHijK5l6JoiyTuCMmaHQMd5zrG8Q2PAhDdWQ==}
+  /@stryker-mutator/instrumenter@8.2.5:
+    resolution: {integrity: sha512-wEa6LO+3cOCZvRtAHqvB75My+s1BmOmsw8ePXjXC51chbeqozndPf1EFCR7xE334+DyMcfzkMywmR+uPpBcjSQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@babel/core': 7.23.9
@@ -1449,30 +1449,30 @@ packages:
       '@babel/parser': 7.23.9
       '@babel/plugin-proposal-decorators': 7.23.9(@babel/core@7.23.9)
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.9)
-      '@stryker-mutator/api': 8.2.3
-      '@stryker-mutator/util': 8.2.3
+      '@stryker-mutator/api': 8.2.5
+      '@stryker-mutator/util': 8.2.5
       angular-html-parser: 5.2.0
-      semver: 7.5.4
-      weapon-regex: 1.3.0
+      semver: 7.6.0
+      weapon-regex: 1.3.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@stryker-mutator/jest-runner@8.2.3(@stryker-mutator/core@8.2.3):
-    resolution: {integrity: sha512-gYxjL/erxJ70RjE7Sn4uVSpAKW6af0Qww8ocYKcvnxnj38htxZ1m+lhb46TBdCTV8BNGAiAodxn+lm4HlTSKgg==}
+  /@stryker-mutator/jest-runner@8.2.5(@stryker-mutator/core@8.2.5):
+    resolution: {integrity: sha512-GaHbivO326IAsYGf1PrMToB8EdZKMS1LfeKtr2oRMwRGbyDk02bcYZaezMKIFECx1rHqOJG1b2LP90+91PsxOw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@stryker-mutator/core': ~8.2.0
     dependencies:
-      '@stryker-mutator/api': 8.2.3
-      '@stryker-mutator/core': 8.2.3
-      '@stryker-mutator/util': 8.2.3
-      semver: 7.5.4
+      '@stryker-mutator/api': 8.2.5
+      '@stryker-mutator/core': 8.2.5
+      '@stryker-mutator/util': 8.2.5
+      semver: 7.6.0
       tslib: 2.6.2
     dev: true
 
-  /@stryker-mutator/util@8.2.3:
-    resolution: {integrity: sha512-wo3OhxmDqDVIsZkaVGrRj85/hlcNuyZr1wKKEiddfQdf3cXO3UeC4Q0i3HdnH+wn9DnWWgNPrin9PgyL/2fXOQ==}
+  /@stryker-mutator/util@8.2.5:
+    resolution: {integrity: sha512-C4G2FPqV1+doAiDIg9mib2zluCpbZgyCe7ASsG/ejpTO7aVHpSpYChF3mvVH6abTCFBCVANGm9JwXPXI/uWBYQ==}
     dev: true
 
   /@supabase/functions-js@2.1.5:
@@ -2699,13 +2699,13 @@ packages:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
-      flatted: 3.2.9
+      flatted: 3.3.1
       keyv: 4.5.4
       rimraf: 3.0.2
     dev: true
 
-  /flatted@3.2.9:
-    resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
+  /flatted@3.3.1:
+    resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
     dev: true
 
   /follow-redirects@1.15.5:
@@ -2789,7 +2789,7 @@ packages:
     dependencies:
       es-errors: 1.3.0
       function-bind: 1.1.2
-      has-proto: 1.0.1
+      has-proto: 1.0.3
       has-symbols: 1.0.3
       hasown: 2.0.1
     dev: true
@@ -2925,8 +2925,8 @@ packages:
       es-define-property: 1.0.0
     dev: true
 
-  /has-proto@1.0.1:
-    resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
+  /has-proto@1.0.3:
+    resolution: {integrity: sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q==}
     engines: {node: '>= 0.4'}
     dev: true
 
@@ -3011,8 +3011,8 @@ packages:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
     dev: true
 
-  /inquirer@9.2.14:
-    resolution: {integrity: sha512-4ByIMt677Iz5AvjyKrDpzaepIyMewNvDcvwpVVRZNmy9dLakVoVgdCHZXbK1SlVJra1db0JZ6XkJyHsanpdrdQ==}
+  /inquirer@9.2.15:
+    resolution: {integrity: sha512-vI2w4zl/mDluHt9YEQ/543VTCwPKWiHzKtm9dM2V0NdFcqEexDAjUHzO1oA60HRNaVifGXXM1tRRNluLVHa0Kg==}
     engines: {node: '>=18'}
     dependencies:
       '@ljharb/through': 2.3.12
@@ -3790,7 +3790,7 @@ packages:
     dependencies:
       date-format: 4.0.14
       debug: 4.3.4
-      flatted: 3.2.9
+      flatted: 3.3.1
       rfdc: 1.3.1
       streamroller: 3.1.5
     transitivePeerDependencies:
@@ -4384,14 +4384,6 @@ packages:
     hasBin: true
     dev: true
 
-  /semver@7.5.4:
-    resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      lru-cache: 6.0.0
-    dev: true
-
   /semver@7.6.0:
     resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
     engines: {node: '>=10'}
@@ -4817,8 +4809,8 @@ packages:
       defaults: 1.0.4
     dev: true
 
-  /weapon-regex@1.3.0:
-    resolution: {integrity: sha512-0bvJynFMAedPFDRPPEDXAS4ZvlsRligfvpPPpB7Efgnf6xKw8/O6qHfdYLa0fFuOaHTQuX1sXeRX/DsqRmu7bA==}
+  /weapon-regex@1.3.1:
+    resolution: {integrity: sha512-l1qFP+WdehGfqNwW9MTtEB87PZITaIiz+m0ndvJS80/jlShRvP4rRQR/XXij53Rfa1zRe2qbOAcH+MQAsYtYYw==}
     dev: true
 
   /webidl-conversions@3.0.1:
