@@ -23,7 +23,7 @@
     "@babel/core": "^7.23.9",
     "@babel/preset-typescript": "^7.23.3",
     "@jest/globals": "^29.7.0",
-    "@playwright/test": "1.41.2",
+    "@playwright/test": "1.45.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
