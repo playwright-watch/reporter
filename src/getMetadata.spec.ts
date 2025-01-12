@@ -3,7 +3,7 @@ import * as Metadata from './getMetadata';
 
 describe('getMetadata', () => {
   const OLD_ENV = process.env;
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
   const getMetadata = () => require('./index').getMetadata();
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('getMetadata', () => {
 
   test(`Package index should export ${Metadata.getMetadata.name}`, () => {
     const indexGetMetadata: typeof Metadata.getMetadata =
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
       require('./index').getMetadata;
 
     expect(typeof indexGetMetadata).toBe('function');
@@ -34,6 +34,8 @@ describe('getMetadata', () => {
     process.env.GITHUB_SERVER_URL = 'https://github.com';
     process.env.GITHUB_REPOSITORY = 'example/qa-stuff';
     process.env.GITHUB_RUN_ID = '782138031';
+    process.env.GITHUB_HEAD_REF = 'tesing-branch';
+    process.env.GITHUB_REF_NAME = 'refs/heads/tesing-branch';
 
     expect(getMetadata).not.toThrow();
     const emptyMetadata = getMetadata();
@@ -41,6 +43,29 @@ describe('getMetadata', () => {
     expect(emptyMetadata).toEqual({
       github: {
         runUrl: 'https://github.com/example/qa-stuff/actions/runs/782138031',
+        repository: 'example/qa-stuff',
+        branch: 'tesing-branch',
+      },
+    });
+  });
+
+  test('Github PullRequest metadata read from environment', async () => {
+    process.env.GITHUB_ACTIONS = '1';
+    process.env.GITHUB_SERVER_URL = 'https://github.com';
+    process.env.GITHUB_REPOSITORY = 'example/qa-stuff';
+    process.env.GITHUB_RUN_ID = '782138031';
+    process.env.GITHUB_HEAD_REF = 'tesing-branch';
+    process.env.GITHUB_REF_NAME = '5621/merge';
+
+    expect(getMetadata).not.toThrow();
+    const emptyMetadata = getMetadata();
+
+    expect(emptyMetadata).toEqual({
+      github: {
+        runUrl: 'https://github.com/example/qa-stuff/actions/runs/782138031',
+        repository: 'example/qa-stuff',
+        branch: 'tesing-branch',
+        pullRequest: '5621',
       },
     });
   });
