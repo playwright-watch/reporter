@@ -16,7 +16,7 @@ jobs:
     name: Release & Publish
 
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         id: release
         name: Release please
         with:
